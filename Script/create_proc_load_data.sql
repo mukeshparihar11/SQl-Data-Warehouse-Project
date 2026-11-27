@@ -38,7 +38,9 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS
 (@cst_id, cst_key, cst_firstname, cst_lastname, cst_marital_status, cst_gndr, @cst_create_date)
-SET cst_id = NULLIF(TRIM(@cst_id), ''),
+SET 
+    cst_id = NULLIF(TRIM(@cst_id), ''),
+    cst_gndr = NULLIF(TRIM(@cst_gndr), ''),
     cst_create_date = STR_TO_DATE(NULLIF(TRIM(@cst_create_date), ''), '%Y-%m-%d');
 
 
@@ -51,7 +53,8 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS
 (@prd_id, prd_key, prd_nm, @prd_cost, prd_line, @prd_start_dt, @prd_end_dt)
-SET prd_id   = NULLIF(TRIM(@prd_id), ''),
+SET 
+    prd_id   = NULLIF(TRIM(@prd_id), ''),
     prd_cost = NULLIF(TRIM(@prd_cost), ''),
     prd_start_dt = STR_TO_DATE(NULLIF(TRIM(@prd_start_dt), ''), '%d-%m-%Y'),
     prd_end_dt   = STR_TO_DATE(NULLIF(TRIM(@prd_end_dt), ''), '%d-%m-%Y');
@@ -66,7 +69,8 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS
 (sls_ord_num, sls_prd_key, @sls_cust_id, @sls_order_dt, @sls_ship_dt, @sls_due_dt,
  @sls_sales, @sls_quantity, @sls_price)
-SET sls_cust_id  = NULLIF(TRIM(@sls_cust_id), ''),
+SET 
+    sls_cust_id  = NULLIF(TRIM(@sls_cust_id), ''),
     sls_sales    = NULLIF(TRIM(@sls_sales), ''),
     sls_quantity = NULLIF(TRIM(@sls_quantity), ''),
     sls_price    = NULLIF(TRIM(@sls_price), ''),
@@ -93,7 +97,8 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS
 (@CID, @BDATE, @GEN)
-SET BDATE = STR_TO_DATE(NULLIF(TRIM(@BDATE), ''), '%d-%m-%Y');
+SET 
+   BDATE = STR_TO_DATE(NULLIF(TRIM(@BDATE), ''), '%d-%m-%Y');
  
  TRUNCATE TABLE erp_cat_product; 
  
